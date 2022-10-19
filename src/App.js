@@ -5,6 +5,7 @@ import axios from 'axios';
 
 function App() {
 	const [Data, setData] = useState([]);
+	const [Index, setIndex] = useState(0);
 
 	useEffect(async () => {
 		const result = await axios.get(process.env.PUBLIC_URL + '/DB/data.json');
@@ -14,15 +15,27 @@ function App() {
 	return (
 		<section>
 			<ul className='btns'>
-				{Data.map((el, idx) => (
-					<li key={idx}>{el.title}</li>
-				))}
+				{Data.map((el, idx) => {
+					let isOn = '';
+					Index === idx && (isOn = 'on');
+					return (
+						<li key={idx} className={isOn}>
+							{el.title}
+						</li>
+					);
+				})}
 			</ul>
 
 			<div className='boxs'>
-				{Data.map((el, idx) => (
-					<article key={idx}>{el.content}</article>
-				))}
+				{Data.map((el, idx) => {
+					let isOn = '';
+					Index === idx && (isOn = 'on');
+					return (
+						<article key={idx} className={isOn}>
+							{el.content}
+						</article>
+					);
+				})}
 			</div>
 		</section>
 	);
