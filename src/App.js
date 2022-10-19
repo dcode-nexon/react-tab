@@ -11,10 +11,21 @@ function App() {
 		setData(result.data.data);
 	}, []);
 
-	useEffect(() => {
-		console.log(Data);
-	}, [Data]);
-	return <></>;
+	return (
+		<section>
+			<ul className='btns'>
+				{Data.map((el, idx) => (
+					<li key={idx}>{el.title}</li>
+				))}
+			</ul>
+
+			<div className='boxs'>
+				{Data.map((el, idx) => (
+					<article key={idx}>{el.content}</article>
+				))}
+			</div>
+		</section>
+	);
 }
 
 export default App;
