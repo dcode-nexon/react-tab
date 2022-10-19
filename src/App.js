@@ -19,7 +19,7 @@ function App() {
 					let isOn = '';
 					Index === idx && (isOn = 'on');
 					return (
-						<li key={idx} className={isOn}>
+						<li key={idx} className={isOn} onClick={() => setIndex(idx)}>
 							{el.title}
 						</li>
 					);
